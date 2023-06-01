@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+<title>register page</title>
+{% endblock title %}
+
+{% block css %}
+{% endblock css %}
+
+{% block body %}
+
+
+<!-- heading -->
+<div class="container my-5 p-2 text-center bg-secondary text-light rounded-3 shadow" >
+    <h1 class="display6 "> register</h1>
+</div>
+<!-- form div -->
+<div class="container p-5 shadow" style="width:60%;">
+    <form action="{% url 'register' %}" method="post">
+        {% csrf_token %}
+        {% for fm in forms %}
+        <div class="mb-3" >
+            {{fm.label_tag}}
+            {{fm}}
+            <span style="color:red;">{{fm.errors|striptags }}</span>
+        {% endfor %}
+        </div>
+        <div class="mb-3">
+            <input type="submit" value="register" class="btn btn-success">
+        </div>
+
+    </form>
+    
+</div>
+{% endblock body %}
+
+{% block js %}
+{% endblock js %}
